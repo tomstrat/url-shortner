@@ -4,7 +4,7 @@ const layout = require('../views/layout');
 module.exports = (app, DB) => {
 	app.get('/:id', (req, res) => {
 		//Check for ID not url string
-		if (typeof req.params.id === 'number') {
+		if (typeof parseInt(req.params.id) === 'number') {
 			DB.findURL(req.params.id, (url) => {
 				if (!url) {
 					res.send(layout(form('No short url exists!')));
